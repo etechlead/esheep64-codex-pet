@@ -43,7 +43,8 @@ input {
   font: inherit;
 }
 
-button {
+button,
+.button-link {
   min-height: 38px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -52,11 +53,13 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.button-link:hover {
   border-color: #9fa8b3;
 }
 
 button:focus-visible,
+a:focus-visible,
 input:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
   outline-offset: 2px;
@@ -73,6 +76,10 @@ button[aria-pressed="true"] {
   align-items: center;
   justify-content: center;
   gap: 7px;
+}
+
+.button-link {
+  text-decoration: none;
 }
 
 .button-with-icon svg {
@@ -215,10 +222,29 @@ h1 {
   font-variant-numeric: tabular-nums;
 }
 
+.install-hint {
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
 .stage-export-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 10px;
+}
+
+.stage-export-row .button-link {
+  padding: 0 14px;
+  white-space: nowrap;
+}
+
+.stage-export-row .button-link:first-child {
+  min-width: 108px;
+}
+
+.stage-export-row .button-link:last-child {
+  min-width: 156px;
 }
 
 input[type="range"] {
@@ -390,8 +416,7 @@ input[type="range"] {
   }
 
   .state-nav,
-  .playback-grid,
-  .stage-export-row {
+  .playback-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

@@ -1,5 +1,7 @@
 import { Download } from "lucide-react";
 import { CodexCellCanvas } from "./FrameCanvas";
+import petJsonUrl from "../../bundle/pet.json?url";
+import spritesheetUrl from "../../bundle/spritesheet.webp?url";
 import type { EditableAnimation, ImageLoadState } from "../pet/types";
 
 type StagePanelProps = {
@@ -7,8 +9,6 @@ type StagePanelProps = {
   readonly sourceImage: HTMLImageElement | null;
   readonly selected: EditableAnimation;
   readonly frame: number;
-  readonly exportStatus: string;
-  readonly onExport: () => void;
 };
 
 export function StagePanel({
@@ -16,8 +16,6 @@ export function StagePanel({
   sourceImage,
   selected,
   frame,
-  exportStatus,
-  onExport,
 }: StagePanelProps) {
   return (
     <div className="stage-panel">
@@ -31,16 +29,22 @@ export function StagePanel({
         )}
       </div>
       <div className="stage-export-row">
-        <button className="button-with-icon" type="button" onClick={onExport}>
+        <a className="button-link button-with-icon" href={petJsonUrl} download="pet.json">
           <Download aria-hidden="true" size={16} strokeWidth={2} />
-          <span>Export WebP</span>
-        </button>
+          <span>pet.json</span>
+        </a>
+        <a
+          className="button-link button-with-icon"
+          href={spritesheetUrl}
+          download="spritesheet.webp"
+        >
+          <Download aria-hidden="true" size={16} strokeWidth={2} />
+          <span>spritesheet.webp</span>
+        </a>
       </div>
-      {exportStatus ? (
-        <div className="export-status" role="status">
-          {exportStatus}
-        </div>
-      ) : null}
+      <div className="install-hint">
+        (put them into <code>~/.codex/pets/esheep64</code>)
+      </div>
     </div>
   );
 }
