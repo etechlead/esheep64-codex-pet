@@ -19,7 +19,7 @@ Install from the shared pet catalog:
 npx codex-pets add esheep64
 ```
 
-Catalog page: https://codex-pet-share.pages.dev/#/pets/esheep64
+Catalog page: https://codex-pets.net/#/pets/esheep64
 
 The ready-to-install pet bundle is in `bundle/`:
 
