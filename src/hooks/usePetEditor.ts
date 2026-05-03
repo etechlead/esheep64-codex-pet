@@ -8,12 +8,7 @@ import { totalSourceFrames } from "../pet/atlas";
 import { exportCodexAtlas } from "../pet/exportAtlas";
 import { loadSourceFrames } from "../pet/imageLoading";
 import { createEditableAnimations, sourceFramesPath } from "../pet/petData";
-import type {
-  EditableAnimation,
-  ExportFormat,
-  ImageLoadState,
-  Offset,
-} from "../pet/types";
+import type { EditableAnimation, ImageLoadState, Offset } from "../pet/types";
 import { createCompleteOffsets } from "../utils/offsets";
 
 const initialAnimations = createEditableAnimations();
@@ -161,18 +156,18 @@ export function usePetEditor() {
     );
   }
 
-  async function exportAtlas(format: ExportFormat) {
+  async function exportAtlas() {
     if (!sourceImage) {
       setExportStatus("Source frames are not loaded yet");
       return;
     }
 
     try {
-      setExportStatus(`Generating ${format.toUpperCase()}...`);
-      setExportStatus(await exportCodexAtlas(format, animations, sourceImage));
+      setExportStatus("Generating WEBP...");
+      setExportStatus(await exportCodexAtlas(animations, sourceImage));
     } catch (error) {
       setExportStatus(
-        error instanceof Error ? error.message : `${format.toUpperCase()} export failed`,
+        error instanceof Error ? error.message : "WEBP export failed",
       );
     }
   }

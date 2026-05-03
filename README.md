@@ -36,8 +36,7 @@ npm install
 npm run dev
 ```
 
-The editor exports `spritesheet.png` or `spritesheet.webp`.
-For final packaging, prefer a lossless WebP spritesheet.
+The editor exports `spritesheet.webp` for final packaging.
 
 ## License
 

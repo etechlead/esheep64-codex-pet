@@ -28,7 +28,7 @@ export default function App() {
             selected={editor.selected}
             frame={editor.frame}
             exportStatus={editor.exportStatus}
-            onExport={(format) => void editor.exportAtlas(format)}
+            onExport={() => void editor.exportAtlas()}
           />
 
           <aside className="details">

@@ -1,6 +1,6 @@
 import { Download } from "lucide-react";
 import { CodexCellCanvas } from "./FrameCanvas";
-import type { EditableAnimation, ExportFormat, ImageLoadState } from "../pet/types";
+import type { EditableAnimation, ImageLoadState } from "../pet/types";
 
 type StagePanelProps = {
   readonly imageState: ImageLoadState;
@@ -8,7 +8,7 @@ type StagePanelProps = {
   readonly selected: EditableAnimation;
   readonly frame: number;
   readonly exportStatus: string;
-  readonly onExport: (format: ExportFormat) => void;
+  readonly onExport: () => void;
 };
 
 export function StagePanel({
@@ -31,15 +31,7 @@ export function StagePanel({
         )}
       </div>
       <div className="stage-export-row">
-        <button className="button-with-icon" type="button" onClick={() => onExport("png")}>
-          <Download aria-hidden="true" size={16} strokeWidth={2} />
-          <span>Export PNG</span>
-        </button>
-        <button
-          className="button-with-icon"
-          type="button"
-          onClick={() => onExport("webp")}
-        >
+        <button className="button-with-icon" type="button" onClick={onExport}>
           <Download aria-hidden="true" size={16} strokeWidth={2} />
           <span>Export WebP</span>
         </button>

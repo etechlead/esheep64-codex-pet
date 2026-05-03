@@ -30,8 +30,6 @@ export type EditorSettings = {
   readonly animations: Record<string, AnimationSettings>;
 };
 
-export type ExportFormat = "png" | "webp";
-
 export type ImageLoadState =
   | { status: "loading" }
   | { status: "ready"; sourceFrames: HTMLImageElement }

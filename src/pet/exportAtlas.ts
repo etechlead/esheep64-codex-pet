@@ -1,19 +1,16 @@
 import { buildCodexAtlasCanvas } from "./atlas";
-import type { EditableAnimation, ExportFormat } from "./types";
+import type { EditableAnimation } from "./types";
 
 export async function exportCodexAtlas(
-  format: ExportFormat,
   states: readonly EditableAnimation[],
   sourceFrames: HTMLImageElement,
 ): Promise<string> {
   const canvas = buildCodexAtlasCanvas(states, sourceFrames);
-  const mime = format === "png" ? "image/png" : "image/webp";
-  const suggestedName = `spritesheet.${format}`;
-  const blob = await canvasToBlob(canvas, mime, format === "webp" ? 1 : undefined);
+  const blob = await canvasToBlob(canvas, "image/webp", 1);
 
-  saveBlob(blob, suggestedName);
+  saveBlob(blob, "spritesheet.webp");
 
-  return `Exported ${format.toUpperCase()}, ${canvas.width} x ${canvas.height}, ${Math.round(
+  return `Exported WEBP, ${canvas.width} x ${canvas.height}, ${Math.round(
     blob.size / 1024,
   )} KB`;
 }
