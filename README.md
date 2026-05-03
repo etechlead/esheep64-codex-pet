@@ -9,9 +9,7 @@ desktop windows.
 
 ## Demo
 
-<p align="center">
-  <video src="docs/media/demo.mp4" controls muted loop width="628"></video>
-</p>
+https://github.com/user-attachments/assets/24c6d786-ace2-4a18-b55d-45692bc5338e
 
 ## Install
 
