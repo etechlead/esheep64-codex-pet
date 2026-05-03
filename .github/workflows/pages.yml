@@ -25,11 +25,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: npm
-          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund --cache "$RUNNER_TEMP/npm-cache"
 
       - name: Lint
         run: npm run lint
