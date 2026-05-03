@@ -34,8 +34,11 @@ export function drawSourceFrame(
   target: CanvasRenderingContext2D,
   sourceFrames: HTMLImageElement,
   frameId: number,
+  scale = 1,
 ): void {
-  target.clearRect(0, 0, sourceFrameWidth, sourceFrameHeight);
+  const previewWidth = sourceFrameWidth * scale;
+  const previewHeight = sourceFrameHeight * scale;
+  target.clearRect(0, 0, previewWidth, previewHeight);
   target.imageSmoothingEnabled = false;
   const rect = sourceRect(frameId);
   target.drawImage(
@@ -46,8 +49,8 @@ export function drawSourceFrame(
     sourceFrameHeight,
     0,
     0,
-    sourceFrameWidth,
-    sourceFrameHeight,
+    previewWidth,
+    previewHeight,
   );
 }
 

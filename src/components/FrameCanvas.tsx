@@ -8,6 +8,8 @@ import {
 } from "../pet/petData";
 import type { EditableAnimation } from "../pet/types";
 
+const sourcePreviewScale = 2;
+
 type CodexCellCanvasProps = {
   readonly sourceImage: HTMLImageElement;
   readonly state: EditableAnimation;
@@ -46,14 +48,14 @@ export function SourceFrameCanvas({ sourceImage, frameId }: SourceFrameCanvasPro
     if (!canvasRef.current) {
       return;
     }
-    drawSourceFrame(getCanvasContext(canvasRef.current), sourceImage, frameId);
+    drawSourceFrame(getCanvasContext(canvasRef.current), sourceImage, frameId, sourcePreviewScale);
   }, [sourceImage, frameId]);
 
   return (
     <canvas
       ref={canvasRef}
-      width={sourceFrameWidth}
-      height={sourceFrameHeight}
+      width={sourceFrameWidth * sourcePreviewScale}
+      height={sourceFrameHeight * sourcePreviewScale}
       aria-label={`Original frame ${frameId}`}
     />
   );
