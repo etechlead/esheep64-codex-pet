@@ -1,0 +1,54 @@
+# eSheep64 Codex Pet
+
+An eSheep64-inspired animated pet for Codex, with a small web editor for mapping
+original eSheep64 source frames into a Codex-compatible spritesheet.
+
+eSheep64 is a modern 64-bit recreation of eSheep / Stray Sheep, a 1995 Windows
+screen mate that let a tiny sheep walk around, climb, fall, and interact with
+desktop windows.
+
+## Demo
+
+<p align="center">
+  <video src="docs/media/demo.mp4" controls muted loop width="628"></video>
+</p>
+
+## Install
+
+The ready-to-install pet bundle is in `bundle/`:
+
+```text
+bundle/
+  pet.json
+  esheep64-spritesheet.webp
+```
+
+To install it, create `~/.codex/pets/esheep64` in your home directory and put
+both bundle files there. The final folder should contain `pet.json` and
+`esheep64-spritesheet.webp`.
+
+## Editor
+
+Live editor: https://etechlead.github.io/esheep64-codex-pet/
+
+![Editor screenshot](docs/media/editor.png)
+
+```sh
+npm install
+npm run dev
+```
+
+The editor exports `esheep64-spritesheet.png` or `esheep64-spritesheet.webp`.
+For final packaging, prefer a lossless WebP spritesheet.
+
+## License
+
+Code in this repository is licensed under the MIT License.
+
+The eSheep64 sprite assets are derived from
+[Adrianotiger/desktopPet](https://github.com/Adrianotiger/desktopPet). The
+upstream eSheep64 page credits Adriano Petrucci as author and says the sprites
+are from LiL_Stenly. Those assets are included for preservation and
+compatibility with Codex pets; rights remain with their original authors.
+
+See [NOTICE.md](NOTICE.md) for asset attribution.
