@@ -106,6 +106,30 @@ canvas {
   border-bottom: 1px solid var(--line);
 }
 
+.github-chevron {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 76px;
+  height: 76px;
+  color: var(--accent-ink);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  background: #000000;
+}
+
+.github-chevron:hover {
+  background: #262626;
+}
+
+.github-chevron svg {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+}
+
 .app-footer {
   margin-top: 28px;
   padding-top: 14px;
