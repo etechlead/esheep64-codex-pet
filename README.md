@@ -13,6 +13,14 @@ https://github.com/user-attachments/assets/24c6d786-ace2-4a18-b55d-45692bc5338e
 
 ## Install
 
+Install from the shared pet catalog:
+
+```sh
+npx codex-pets add esheep64
+```
+
+Catalog page: https://codex-pet-share.pages.dev/#/pets/esheep64
+
 The ready-to-install pet bundle is in `bundle/`:
 
 ```text
