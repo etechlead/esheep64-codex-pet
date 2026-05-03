@@ -8,7 +8,7 @@ export async function exportCodexAtlas(
 ): Promise<string> {
   const canvas = buildCodexAtlasCanvas(states, sourceFrames);
   const mime = format === "png" ? "image/png" : "image/webp";
-  const suggestedName = `esheep64-spritesheet.${format}`;
+  const suggestedName = `spritesheet.${format}`;
   const blob = await canvasToBlob(canvas, mime, format === "webp" ? 1 : undefined);
 
   saveBlob(blob, suggestedName);

@@ -18,12 +18,12 @@ The ready-to-install pet bundle is in `bundle/`:
 ```text
 bundle/
   pet.json
-  esheep64-spritesheet.webp
+  spritesheet.webp
 ```
 
 To install it, create `~/.codex/pets/esheep64` in your home directory and put
 both bundle files there. The final folder should contain `pet.json` and
-`esheep64-spritesheet.webp`.
+`spritesheet.webp`.
 
 ## Editor
 
@@ -36,7 +36,7 @@ npm install
 npm run dev
 ```
 
-The editor exports `esheep64-spritesheet.png` or `esheep64-spritesheet.webp`.
+The editor exports `spritesheet.png` or `spritesheet.webp`.
 For final packaging, prefer a lossless WebP spritesheet.
 
 ## License
