@@ -1,7 +1,7 @@
 import { Download } from "lucide-react";
 import { CodexCellCanvas } from "./FrameCanvas";
 import petJsonUrl from "../../bundle/pet.json?url";
-import spritesheetUrl from "../../bundle/spritesheet.webp?url";
+import { saveUrl, type SaveFileOptions } from "../pet/saveFile";
 import type { EditableAnimation, ImageLoadState } from "../pet/types";
 
 type StagePanelProps = {
@@ -9,6 +9,7 @@ type StagePanelProps = {
   readonly sourceImage: HTMLImageElement | null;
   readonly selected: EditableAnimation;
   readonly frame: number;
+  readonly onSaveSpritesheet: () => Promise<void>;
 };
 
 export function StagePanel({
@@ -16,7 +17,16 @@ export function StagePanel({
   sourceImage,
   selected,
   frame,
+  onSaveSpritesheet,
 }: StagePanelProps) {
+  async function saveBundleFile(url: string, options: SaveFileOptions) {
+    try {
+      await saveUrl(url, options);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="stage-panel">
       <div className="stage">
@@ -29,18 +39,30 @@ export function StagePanel({
         )}
       </div>
       <div className="stage-export-row">
-        <a className="button-link button-with-icon" href={petJsonUrl} download="pet.json">
+        <button
+          className="button-link button-with-icon"
+          type="button"
+          onClick={() =>
+            void saveBundleFile(petJsonUrl, {
+              suggestedName: "pet.json",
+              mimeType: "application/json",
+              extensions: [".json"],
+              description: "JSON file",
+            })
+          }
+        >
           <Download aria-hidden="true" size={16} strokeWidth={2} />
           <span>pet.json</span>
-        </a>
-        <a
+        </button>
+        <button
           className="button-link button-with-icon"
-          href={spritesheetUrl}
-          download="spritesheet.webp"
+          type="button"
+          disabled={!sourceImage}
+          onClick={() => void onSaveSpritesheet()}
         >
           <Download aria-hidden="true" size={16} strokeWidth={2} />
           <span>spritesheet.webp</span>
-        </a>
+        </button>
       </div>
       <div className="install-hint">
         (put them into <code>~/.codex/pets/esheep64</code>)

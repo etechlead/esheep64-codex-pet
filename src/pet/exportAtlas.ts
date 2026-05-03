@@ -1,4 +1,5 @@
 import { buildCodexAtlasCanvas } from "./atlas";
+import { saveBlob } from "./saveFile";
 import type { EditableAnimation } from "./types";
 
 export async function exportCodexAtlas(
@@ -8,7 +9,16 @@ export async function exportCodexAtlas(
   const canvas = buildCodexAtlasCanvas(states, sourceFrames);
   const blob = await canvasToBlob(canvas, "image/webp", 1);
 
-  saveBlob(blob, "spritesheet.webp");
+  const saveResult = await saveBlob(blob, {
+    suggestedName: "spritesheet.webp",
+    mimeType: "image/webp",
+    extensions: [".webp"],
+    description: "WEBP image",
+  });
+
+  if (saveResult === "cancelled") {
+    return "WEBP export cancelled";
+  }
 
   return `Exported WEBP, ${canvas.width} x ${canvas.height}, ${Math.round(
     blob.size / 1024,
@@ -33,15 +43,4 @@ function canvasToBlob(
       quality,
     );
   });
-}
-
-function saveBlob(blob: Blob, suggestedName: string): void {
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = suggestedName;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

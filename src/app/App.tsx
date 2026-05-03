@@ -27,6 +27,7 @@ export default function App() {
             sourceImage={editor.sourceImage}
             selected={editor.selected}
             frame={editor.frame}
+            onSaveSpritesheet={editor.exportAtlas}
           />
 
           <aside className="details">
