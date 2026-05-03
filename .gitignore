@@ -4,3 +4,5 @@ node_modules/
 *.local
 .DS_Store
 Thumbs.db
+.playwright-cli/
+test-results/
